@@ -2,6 +2,8 @@
 
 This is a Spring Boot-based RESTful API designed for managing restaurant reservations. It allows customers to create, update, view, and cancel their reservations, as well as manage their profiles. The API provides functionality for customer management, reservation management, and sending notifications.
 
+Note: Frontend repository - https://github.com/airissejoygonzales/restaurant-reservation-system.git
+
 ## Table of Contents
 
 [//]: # (- [API Endpoints]&#40;#api-endpoints&#41;)
