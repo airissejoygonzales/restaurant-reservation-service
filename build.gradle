@@ -1,0 +1,53 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.0'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'ajag.projects'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.springframework.boot:spring-boot-starter-logging'
+
+	runtimeOnly 'com.h2database:h2'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+bootJar {
+	archiveFileName = "${project.name}-${project.version}.jar"
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+javadoc {
+	// Set the location for generated Javadoc
+	destinationDir = file("${buildDir}/docs/javadoc")
+
+	// Set encoding and additional options
+	options {
+		encoding = 'UTF-8'
+		charSet = 'UTF-8'
+		links('https://docs.oracle.com/en/java/javase/11/docs/api/') // Link to external Java API docs
+		memberLevel = JavadocMemberLevel.PUBLIC // Include only public members
+		addStringOption('Xdoclint:none', '-quiet') // Suppress warnings
+	}
+}
